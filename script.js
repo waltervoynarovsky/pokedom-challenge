@@ -4,7 +4,7 @@ const card = document.querySelector(".card-container");
 const inputBox = document.querySelector(".input");
 
 const generateCards = (pokemonArray) => {
-  pokemonArray.forEach((pokemon) => {
+  pokemonArray.map((pokemon) => {
     return (card.innerHTML += `<div class=card><img src="${
       pokemon.sprite
     }" class="card__image"/>
@@ -22,10 +22,8 @@ generateCards(pokemonArray);
 
 inputBox.addEventListener("input", (event) => {
   const searchTerm = event.target.value.toLowerCase();
-  // console.log(searchTerm);
   const filteredPokemon = pokemonArray.filter((pokemon) => {
     return pokemon.name.toLowerCase().includes(searchTerm);
   });
   generateCards(filteredPokemon);
-  console.log(generateCards(filteredPokemon));
 });
