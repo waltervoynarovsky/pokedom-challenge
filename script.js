@@ -7,7 +7,8 @@ const generateCards = (pokemonArray) => {
   pokemonArray.forEach((pokemon) => {
     return (card.innerHTML += `<div class=card><img src="${
       pokemon.sprite
-    }" class="card__image"/><div class="card__content"><h2 class="card__heading">${
+    }" class="card__image"/>
+    <div class="card__content"><h2 class="card__heading">${
       pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
     }</h2>
         <p class="card__text">${
@@ -19,23 +20,12 @@ const generateCards = (pokemonArray) => {
 };
 generateCards(pokemonArray);
 
-const filterBySearchTerm = (pokemonArray, searchTerm) => {
-  const filtered = pokemonArray.filter((pokemon) => {
-    return pokemon.includes(searchTerm);
-  });
-
-  return filtered;
-};
-// };
-// console.log(filterBySearchTerm(pokemonArray.name, "z"));
 inputBox.addEventListener("input", (event) => {
-  const filterBySearch = event.target.value;
-  let filteredPokemon = filterBySearchTerm(pokemonArray, filterBySearch);
-  galleryHTML.innerHTML = generateCards(filteredPokemon).join("");
+  const searchTerm = event.target.value.toLowerCase();
+  // console.log(searchTerm);
+  const filteredPokemon = pokemonArray.filter((pokemon) => {
+    return pokemon.name.toLowerCase().includes(searchTerm);
+  });
+  generateCards(filteredPokemon);
+  console.log(generateCards(filteredPokemon));
 });
-
-// filterBySearchTerm.addEventListener("input", (event) => {
-//   const filterBySearch = event.target.value;
-//   let filteredPokemon = filterBySearchTerm(pokemon, filterBySearch);
-//   galleryHTML.innerHTML = generateCards(filteredPokemon).join("");
-// });
