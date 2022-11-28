@@ -19,11 +19,3 @@ const generateCards = (pokemonArray) => {
   });
 };
 generateCards(pokemonArray);
-
-inputBox.addEventListener("input", (event) => {
-  const searchTerm = event.target.value.toLowerCase();
-  const filteredPokemon = pokemonArray.filter((pokemon) => {
-    return pokemon.name.toLowerCase().includes(searchTerm);
-  });
-  generateCards(filteredPokemon);
-});
