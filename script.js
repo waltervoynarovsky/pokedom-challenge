@@ -4,7 +4,7 @@ const card = document.querySelector(".card-container");
 const inputBox = document.querySelector(".input");
 
 const generateCards = (pokemonArray) => {
-  pokemonArray.filter((pokemon) => {
+  pokemonArray.map((pokemon) => {
     return (card.innerHTML += `<div class=card><img src="${
       pokemon.sprite
     }" class="card__image"/>
